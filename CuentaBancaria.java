@@ -48,20 +48,25 @@ public class CuentaBancaria {
     }
 
     private void transsaldo(Scanner scanner) {
+        System.out.println("Dinero Disponible: " + saldo);
         System.out.print("Ingrese usuario a transferir: ");
         usuarioTransferencia = scanner.nextLine();
         scanner.nextLine();
         System.out.print("Ingresa la cantidad a transferir: ");
         transsaldo = scanner.nextInt();
         scanner.nextLine();
-        saldo = saldo - transsaldo;
-
-        System.out.println("--------------------------");
-        System.out.println("INFORME DE TRANSACCIÓN");
-        System.out.println("--------------------------");
-        System.out.println("Se ha transferido al usuario: " + usuarioTransferencia);
-        System.out.println("Cantidad transferida: " + transsaldo);
-        System.out.println("--------------------------");
+        
+        if (transsaldo <= saldo) {
+            saldo = saldo - transsaldo;
+            System.out.println("--------------------------");
+            System.out.println("INFORME DE TRANSACCIÓN");
+            System.out.println("--------------------------");
+            System.out.println("Se ha transferido al usuario: " + usuarioTransferencia);
+            System.out.println("Cantidad transferida: " + transsaldo);
+            System.out.println("--------------------------");
+        }else {
+            System.out.println("No tiene suficiente dinero");
+        }
     }
 
     private void informacion() {
